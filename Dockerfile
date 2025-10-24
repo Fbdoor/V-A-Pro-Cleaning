@@ -1,20 +1,24 @@
-# Use the official Node.js image
-FROM node:20-alpine
+# Stage 1: Build the application
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+WORKDIR /src
 
-# Create app directory
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copy the rest of the project
+COPY . ./
+
+# Publish the application
+RUN dotnet publish -c Release -o /app/publish
+
+# Stage 2: Create the runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS final
 WORKDIR /app
+COPY --from=build /app/publish .
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Expose port 80
+EXPOSE 80
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the app
-COPY . .
-
-# Expose the port your app runs on
-EXPOSE 3000
-
-# Start the app
-CMD ["npm", "start"]
+# Start the application
+ENTRYPOINT ["dotnet", "MyFirstSite.dll"]
