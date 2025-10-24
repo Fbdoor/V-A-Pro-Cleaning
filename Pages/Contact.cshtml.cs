@@ -90,7 +90,6 @@ namespace MyFirstSite.Pages
                 bodyBuilder.Append("<br><p style='font-size:12px; color:#666;'>This message was sent automatically from your website form.</p>");
                 bodyBuilder.Append("</body></html>");
 
-                // === Send the email ===
                 var mail = new MailMessage
                 {
                     From = new MailAddress("Vnaproestimates@gmail.com"),
