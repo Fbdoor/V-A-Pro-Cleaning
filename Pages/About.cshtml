@@ -1,0 +1,109 @@
+@page
+@model MyFirstSite.Pages.AboutModel
+@{
+    ViewData["Title"] = "About Us";
+}
+
+<!-- Hero Section -->
+<section class="hero-section" style="background: url('/images/about-hero-bg.jpg') center/cover no-repeat; height: 80vh; position: relative;">
+    <div class="hero-content text-center">
+        <h1 class="display-4 fw-bold" style="color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">
+            About V&A Pro Cleaning
+        </h1>
+        <p class="lead" style="color: #fff; text-shadow: 1px 1px 6px rgba(0,0,0,0.8);">
+            Your trusted partner for a spotless and welcoming home.
+        </p>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <img src="/images/mission1.jpg" class="img-fluid rounded shadow" alt="Our Mission">
+        </div>
+        <div class="col-md-6">
+            <h2 class="fw-bold mb-3" style="color:#6d4a4b;">Our Mission</h2>
+            <p>
+                We know how busy life gets for parents — between drop-offs, homework, after-school activities, 
+                and everything else on your plate, finding time to keep the house spotless can feel overwhelming. 
+            </p>
+            <p>
+                That’s why we started <strong>V&A Pro Cleaning LLC</strong>, a local, <strong>family-run cleaning service</strong> right here in the community. 
+                We understand what it’s like to juggle busy schedules and still want a clean, peaceful home for your family. 
+            </p>
+            <p>
+                Whether you need a one-time deep clean, regular upkeep, or move-in/move-out services, we’re here to help 
+                lighten your load so you can focus on what matters most.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="py-5" style="background-color: #f7dfe3;">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4" style="color:#6d4a4b;">Why Choose V&A Pro Cleaning</h2>
+        <p class="mb-5 text-muted">
+            As a proud <strong>family-owned business</strong>, we treat every home as if it were our own, 
+            bringing warmth, care, and attention to detail in every service we provide.
+        </p>
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fas fa-broom fa-3x mb-3" style="color:#6d4a4b;"></i>
+                <h5 class="fw-bold">Expert Cleaners</h5>
+                <p>Our trained professionals deliver high-quality cleaning with attention to detail every time.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-search fa-3x mb-3" style="color:#6d4a4b;"></i>
+                <h5 class="fw-bold">Attention to Detail</h5>
+                <p>We clean every corner and surface to ensure your home shines.</p>
+            </div>
+
+
+            <div class="col-md-4">
+                <i class="fas fa-clock fa-3x mb-3" style="color:#6d4a4b;"></i>
+                <h5 class="fw-bold">Flexible Scheduling</h5>
+                <p>Book cleanings at times that fit your schedule, whether weekly, bi-weekly, or one-time services.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Values Section -->
+<section class="container py-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold" style="color:#6d4a4b;">Our Core Values</h2>
+        <p class="text-muted">What drives our <strong>family business</strong> to deliver exceptional cleaning services.</p>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="p-4 shadow rounded" style="background-color:#fff;">
+                <i class="fas fa-heart fa-2x mb-3" style="color:#6d4a4b;"></i>
+                <h5 class="fw-bold">Care & Respect</h5>
+                <p>We treat your home as if it were our own, with care and respect in every detail.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 shadow rounded" style="background-color:#fff;">
+                <i class="fas fa-thumbs-up fa-2x mb-3" style="color:#6d4a4b;"></i>
+                <h5 class="fw-bold">Reliability</h5>
+                <p>Count on us to show up on time and ready to deliver outstanding cleaning results.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 shadow rounded" style="background-color:#fff;">
+                <i class="fas fa-star fa-2x mb-3" style="color:#6d4a4b;"></i>
+                <h5 class="fw-bold">Excellence</h5>
+                <p>We strive for perfection in everything we do, leaving your home spotless and shining.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="text-center py-5" style="background-color:#6d4a4b; color:white;">
+    <h2 class="mb-3">Ready to Experience the Difference?</h2>
+    <p>Contact our us today for a free quote and let us bring the sparkle back to your home!</p>
+    <a href="/Contact" class="btn btn-light px-4 py-2">Get a Free Quote</a>
+</section>

@@ -1,0 +1,201 @@
+@page
+@model MyFirstSite.Pages.ContactModel
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="quote-container">
+    <h2 class="custom-heading">Get a Free Quote</h2>
+    <p class="muted text-center">We currently serve Durham, NC, and nearby areas.</p>
+
+    @if (!string.IsNullOrEmpty(Model.StatusMessage))
+    {
+        <div class="status-box text-center @(Model.IsSuccess ? "success-message" : "error-message")">
+            @Model.StatusMessage
+        </div>
+    }
+
+    <div id="formError" class="error-message text-center" style="display:none;"></div>
+
+    <form method="post" onsubmit="return validateForm()" novalidate>
+        <!-- Cleaning Type -->
+        <div class="form-group">
+            <label for="CleaningType">Cleaning Type</label>
+            <select id="CleaningType" name="CleaningType" class="form-control" onchange="toggleCleaningFields()" required>
+                <option value="">-- Select Cleaning Type --</option>
+                <option value="FullHouse">Full House Cleaning</option>
+                <option value="SpecificArea">Specific Area Cleaning</option>
+            </select>
+        </div>
+
+        <!-- Full House Section -->
+        <div id="fullHouseSection" style="display:none;">
+            <div class="form-group">
+                <label for="SquareFootage">Square Footage</label>
+                <input type="number" id="SquareFootage" name="SquareFootage" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Rooms">Number of Rooms</label>
+                <input type="number" id="Rooms" name="Rooms" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Bathrooms">Number of Bathrooms</label>
+                <input type="number" id="Bathrooms" name="Bathrooms" class="form-control" />
+            </div>
+        </div>
+
+        <!-- Specific Area Section -->
+        <div id="specificAreaSection" style="display:none;">
+            <div class="form-group">
+                <label for="Description">Describe the area you want to clean</label>
+                <textarea id="Description" name="Description" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+
+        <!-- Preferred Date -->
+        <div class="form-group">
+            <label for="PreferredDate">Preferred Date</label>
+            <input type="date" id="PreferredDate" name="PreferredDate" class="form-control" required />
+        </div>
+
+        <!-- Preferred Time Range -->
+        <div class="form-group">
+            <label>Preferred Time Range</label>
+            <div class="d-flex gap-2">
+                <select id="TimeFrom" name="TimeFrom" class="form-control" required>
+                    <option value="">From</option>
+                    <option>8:00 AM</option>
+                    <option>9:00 AM</option>
+                    <option>10:00 AM</option>
+                    <option>11:00 AM</option>
+                    <option>12:00 PM</option>
+                    <option>1:00 PM</option>
+                    <option>2:00 PM</option>
+                    <option>3:00 PM</option>
+                    <option>4:00 PM</option>
+                    <option>5:00 PM</option>
+                </select>
+
+                <select id="TimeTo" name="TimeTo" class="form-control" required>
+                    <option value="">To</option>
+                    <option>9:00 AM</option>
+                    <option>10:00 AM</option>
+                    <option>11:00 AM</option>
+                    <option>12:00 PM</option>
+                    <option>1:00 PM</option>
+                    <option>2:00 PM</option>
+                    <option>3:00 PM</option>
+                    <option>4:00 PM</option>
+                    <option>5:00 PM</option>
+                    <option>6:00 PM</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Pets -->
+        <div class="form-group">
+            <label>
+                <input type="checkbox" id="HasPets" name="HasPets" value="Yes"> Do you have pets?
+            </label>
+        </div>
+
+        <!-- Special Instructions -->
+        <div class="form-group">
+            <label for="SpecialInstructions"><br />Special Instructions</label>
+            <textarea id="SpecialInstructions" name="SpecialInstructions" class="form-control" rows="3" placeholder="Any specific notes for our cleaning team..."></textarea>
+        </div>
+
+        <!-- Additional Services -->
+        <div class="form-group">
+            <label>Additional Services</label><br />
+            <label><input type="checkbox" name="Services" value="Dishes"> Dishes</label><br />
+            <label><input type="checkbox" name="Services" value="Inside Fridge Cleaning"> Inside Fridge Cleaning</label><br />
+            <label><input type="checkbox" name="Services" value="Inside Oven Cleaning"> Inside Oven Cleaning</label><br />
+            <label><input type="checkbox" name="Services" value="Inside Cabinet Cleaning"> Inside Cabinet Cleaning</label><br />
+            <label><input type="checkbox" name="Services" value="Interior Window Cleaning"> Interior Window Cleaning</label><br />
+            <label><input type="checkbox" name="Services" value="Change Bed Sheets"> Change Bed Sheets</label><br />
+            <label><input type="checkbox" name="Services" value="Make Full Bed"> Make Full Bed</label>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" id="Email" name="Email" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="Phone">Phone</label>
+            <input type="tel" id="Phone" name="Phone" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary full-width">Submit</button>
+    </form>
+
+
+    <!-- Contact Info Section -->
+    <hr />
+    <div class="mt-4">
+        <h4 class="text-center">Prefer to Contact Us Directly?</h4>
+        <ul class="contact-list">
+            <br /><li><i class="fas fa-phone"></i> <a href="tel:+19842199852">+1 (984) 219-9852</a></li>
+            <li><i class="fas fa-phone"></i> <a href="tel:+19198853855">+1 (919) 885-3855</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:vnacleaning.services1@gmail.com">vnacleaning.services1@gmail.com</a></li>
+            <li><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/profile.php?id=61579181680889" target="_blank">Facebook</a></li>
+            <li><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/v_a_procleaning?igsh=MXJodDNuZGd3enBrYg==" target="_blank">Instagram</a></li>
+        </ul>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    // Toggle between Full House and Specific Area fields
+    function toggleCleaningFields() {
+        const type = document.getElementById('CleaningType').value;
+        const fullHouseSection = document.getElementById('fullHouseSection');
+        const specificAreaSection = document.getElementById('specificAreaSection');
+
+        // Hide both sections first
+        fullHouseSection.style.display = 'none';
+        specificAreaSection.style.display = 'none';
+
+        // Show based on selection
+        if (type === 'FullHouse') {
+            fullHouseSection.style.display = 'block';
+        } else if (type === 'SpecificArea') {
+            specificAreaSection.style.display = 'block';
+        }
+    }
+
+    // Prevent past date selection
+    document.addEventListener('DOMContentLoaded', function () {
+        const dateInput = document.getElementById('PreferredDate');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    });
+
+    // Validate form
+    function validateForm() {
+        const type = document.getElementById('CleaningType').value;
+        const sq = document.getElementById('SquareFootage').value.trim();
+        const rooms = document.getElementById('Rooms').value.trim();
+        const baths = document.getElementById('Bathrooms').value.trim();
+        const desc = document.getElementById('Description').value.trim();
+
+        if (!type) {
+            alert('Please select a cleaning type.');
+            return false;
+        }
+
+        if (type === 'FullHouse' && (!sq || !rooms || !baths)) {
+            alert('Please fill in all fields for Full House Cleaning.');
+            return false;
+        }
+
+        if (type === 'SpecificArea' && !desc) {
+            alert('Please describe the area you want cleaned.');
+            return false;
+        }
+
+        return true;
+    }
+</script>
+}

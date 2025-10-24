@@ -1,0 +1,132 @@
+@page
+@model MyFirstSite.Pages.ServicesModel
+@{
+    ViewData["Title"] = "Our Services";
+}
+
+<!-- Hero Section -->
+<section class="services-hero">
+    <div class="services-hero-overlay"></div>
+    <div class="services-hero-content text-center">
+        <h1 class="services-hero-title">Our Services</h1>
+        <p class="services-hero-subtitle">
+            Professional, reliable, and customized cleaning solutions for your home.
+        </p>
+    </div>
+</section>
+
+
+<!-- Services Grid Section -->
+<section class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold" style="color:#6d4a4b;">What We Offer</h2>
+        <p class="text-muted">Explore our range of services designed to keep your home spotless and comfortable.</p>
+    </div>
+    
+    <div class="row g-4">
+        <!-- Service 1 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-home fa-3x mb-3" style="color:#6d4a4b;"></i>
+                    <h5 class="card-title fw-bold">Standard Cleaning</h5>
+                    <p class="card-text">
+                        Regular cleaning services to keep your home consistently fresh and tidy.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-spray-can-sparkles fa-3x mb-3" style="color:#6d4a4b;"></i>
+                    <h5 class="card-title fw-bold">Deep Cleaning</h5>
+                    <p class="card-text">
+                        A thorough, detailed cleaning to make every corner of your home sparkle.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-truck fa-3x mb-3" style="color:#6d4a4b;"></i>
+                    <h5 class="card-title fw-bold">Move-In / Move-Out Cleaning</h5>
+                    <p class="card-text">
+                        Stress-free cleaning to prepare your home for moving day or to welcome new beginnings.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-temperature-low fa-3x mb-3" style="color:#6d4a4b;"></i>
+                    <h5 class="card-title fw-bold">Fridge Cleaning</h5>
+                    <p class="card-text">
+                        Keep your appliances fresh, sanitized, and working at their best with our specialty cleaning.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-calendar-check fa-3x mb-3" style="color:#6d4a4b;"></i>
+                    <h5 class="card-title fw-bold">Custom Cleaning Plans</h5>
+                    <p class="card-text">
+                        Tailored cleaning services to meet your unique schedule and household needs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="py-5" style="background-color: #f7dfe3;">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4" style="color:#6d4a4b;">Why Choose V&A Pro Cleaning</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fas fa-hand-sparkles fa-3x mb-3" style="color:#6d4a4b;"></i>
+                <h5 class="fw-bold">Professional Results</h5>
+                <p>We deliver top-notch cleaning services with attention to every detail.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-search fa-3x mb-3" style="color:#6d4a4b;"></i>
+                <h5 class="fw-bold">Attention to Detail</h5>
+                <p>We clean every corner and surface to ensure your home shines.</p>
+            </div>
+
+
+            <div class="col-md-4">
+                <i class="fas fa-clock fa-3x mb-3" style="color:#6d4a4b;"></i>
+                <h5 class="fw-bold">Flexible Scheduling</h5>
+                <p>Book cleanings that fit perfectly into your lifestyle and routine.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Family Business Note -->
+<section class="container py-4 text-center">
+    <p class="lead" style="color:#6d4a4b;">
+        As a proud <strong>family-owned business</strong>, we treat every home with the same care and respect as our own.
+    </p>
+</section>
+
+<!-- Call to Action -->
+<section class="text-center py-5" style="background-color:#6d4a4b; color:white;">
+    <h2 class="mb-3">Ready to Experience the Difference?</h2>
+    <p>Contact us today for a free quote and let us bring the sparkle back to your home!</p>
+    <a href="/Contact" class="btn btn-light px-4 py-2">Get a Free Quote</a>
+</section>

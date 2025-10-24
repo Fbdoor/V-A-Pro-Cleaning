@@ -1,0 +1,128 @@
+﻿@page
+@model MyFirstSite.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to V&A Pro Cleaning</h1>
+        <p>Professional House Cleaning Services in Durham, NC</p>
+        <div class="hero-buttons">
+            <a href="/Services" class="btn btn-primary">Our Services</a>
+            <a href="/Contact" class="btn btn-outline-light">Get a Free Quote</a>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="py-5 text-center" style="background-color: #f7dfe3;">
+    <div class="container">
+        <h2 class="mb-5">Why Choose V&A Pro Cleaning?</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <i class="fas fa-users fa-3x mb-3" style="color:#6d4a4b;"></i>
+                <h5>Experienced Team</h5>
+                <p>Trained professionals who care about your space.</p>
+            </div>
+            <div class="col-md-3">
+                <i class="fas fa-thumbs-up fa-3x mb-3" style="color:#6d4a4b;"></i>
+                <h5>Reliable Service</h5>
+                <p>Always on time and committed to quality work.</p>
+            </div>
+            <div class="col-md-3">
+                <i class="fas fa-leaf fa-3x mb-3" style="color:#6d4a4b;"></i>
+                <h5>Eco-Friendly</h5>
+                <p>We use safe, eco-friendly cleaning products.</p>
+            </div>
+            <div class="col-md-3">
+                <i class="fas fa-dollar-sign fa-3x mb-3" style="color:#6d4a4b;"></i>
+                <h5>Affordable Rates</h5>
+                <p>High-quality cleaning at prices you can afford.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Top Services -->
+<section class="py-5" style="background-color: #f9f9f9;">
+    <div class="container text-center">
+        <h2 class="mb-5">Our Top Services</h2>
+        <div class="row">
+            <!-- Residential Cleaning -->
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <i class="fas fa-home fa-3x mb-3" style="color:#6d4a4b;"></i>
+                    <h4>Residential Cleaning</h4>
+                    <p>From kitchens to bedrooms, we make your home sparkle and shine.</p>
+                    <a href="/Services" class="btn btn-link">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Move In/Out Cleaning (Replacement for Office Cleaning) -->
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <i class="fas fa-truck-moving fa-3x mb-3" style="color:#6d4a4b;"></i>
+                    <h4>Move In/Out Cleaning</h4>
+                    <p>Make your move stress-free with a complete deep clean for your old or new home.</p>
+                    <a href="/Services" class="btn btn-link">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Deep Cleaning -->
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <i class="fas fa-broom fa-3x mb-3" style="color:#6d4a4b;"></i>
+                    <h4>Deep Cleaning</h4>
+                    <p>We tackle hard-to-reach places and provide a detailed full-house clean.</p>
+                    <a href="/Services" class="btn btn-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-5 text-center" style="background-color:#6d4a4b; color:white;">
+    <div class="container">
+        <p class="mb-4" style="font-size:1.2rem;">
+            Get your free quote today and experience the difference with V&A Pro Cleaning.
+        </p>
+        <a href="/Contact" class="btn btn-light btn-lg">Get a Free Quote</a>
+    </div>
+</section>
+<!-- Direct Contact Section -->
+<section class="py-5 text-center">
+    <div class="container">
+        <h2 class="fw-bold mb-4" style="color:#6d4a4b;">Prefer to Contact Us Directly?</h2>
+        <ul class="list-unstyled text-start d-inline-block" style="max-width: 400px;">
+            <li class="mb-3">
+                <i class="fas fa-phone-alt me-2" style="color:#6d4a4b;"></i>
+                <a href="tel:+19842199852" class="text-decoration-none text-dark">+1 (984) 219-9852</a>
+            </li>
+            <li class="mb-3">
+                <i class="fas fa-phone-alt me-2" style="color:#6d4a4b;"></i>
+                <a href="tel:+19198853855" class="text-decoration-none text-dark">+1 (919) 885-3855</a>
+            </li>
+            <li class="mb-3">
+                <i class="fas fa-envelope me-2" style="color:#6d4a4b;"></i>
+                <a href="mailto:vnacleaning.services1@gmail.com" class="text-decoration-none text-dark">
+                    vnacleaning.services1@gmail.com
+                </a>
+            </li>
+            <li class="mb-3">
+                <i class="fab fa-facebook me-2" style="color:#6d4a4b;"></i>
+                <a href="https://www.facebook.com/profile.php?id=61579181680889" target="_blank" class="text-decoration-none text-dark">
+                    Facebook
+                </a>
+            </li>
+            <li>
+                <i class="fab fa-instagram me-2" style="color:#6d4a4b;"></i>
+                <a href="https://www.instagram.com/v_a_procleaning?igsh=MXJodDNuZGd3enBrYg==" target="_blank" class="text-decoration-none text-dark">
+                    Instagram
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>

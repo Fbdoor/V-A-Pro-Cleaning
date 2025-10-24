@@ -1,0 +1,12 @@
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\MyFirstSite.exe
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\publish\web.config
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\appsettings.Development.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\appsettings.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\publish\appsettings.Development.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\publish\appsettings.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\publish\MyFirstSite.deps.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\publish\MyFirstSite.runtimeconfig.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\MyFirstSite.dll
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\MyFirstSite.deps.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\MyFirstSite.runtimeconfig.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\publish\MyFirstSite.pdb
