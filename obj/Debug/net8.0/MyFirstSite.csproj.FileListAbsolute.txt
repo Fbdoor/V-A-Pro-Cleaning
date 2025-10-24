@@ -33,3 +33,9 @@ C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\bin\Debug\net
 C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\bin\Debug\net8.0\publish\appsettings.json
 C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\bin\Debug\net8.0\publish\MyFirstSite.deps.json
 C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\bin\Debug\net8.0\publish\MyFirstSite.runtimeconfig.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\bin\Debug\net8.0\publish\publish\web.config
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\bin\Debug\net8.0\publish\publish\appsettings.Development.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\bin\Debug\net8.0\publish\publish\appsettings.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\bin\Debug\net8.0\publish\publish\MyFirstSite.deps.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\bin\Debug\net8.0\publish\publish\MyFirstSite.runtimeconfig.json
+C:\Users\FADI AL BDOUR\OneDrive\Desktop\New folder (3)\MyfirstSite\obj\Debug\net8.0\MyFirstSite.sourcelink.json

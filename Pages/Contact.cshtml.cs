@@ -89,25 +89,28 @@ namespace MyFirstSite.Pages
                 bodyBuilder.Append("</table>");
                 bodyBuilder.Append("<br><p style='font-size:12px; color:#666;'>This message was sent automatically from your website form.</p>");
                 bodyBuilder.Append("</body></html>");
-
+                
+                // === Send the email ===
                 var mail = new MailMessage
                 {
-                    From = new MailAddress("Vnaproestimates@gmail.com"),
+                    From = new MailAddress(Environment.GetEnvironmentVariable("SMTP_EMAIL")),
                     Subject = $"New Quote Request - {PreferredDate?.ToString("MM/dd/yyyy")} {DateTime.Now:hh:mm tt}",
                     Body = bodyBuilder.ToString(),
                     IsBodyHtml = true
                 };
 
-                mail.To.Add("Vnaproestimates@gmail.com");
-
-                var smtp = new SmtpClient("smtp.gmail.com")
+                var smtp = new SmtpClient(Environment.GetEnvironmentVariable("SMTP_HOST"))
                 {
-                    Port = 587,
-                    Credentials = new NetworkCredential("Vnaproestimates@gmail.com", "aeuy fxmw pidz ntrj"),
+                    Port = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT")),
+                    Credentials = new NetworkCredential(
+                        Environment.GetEnvironmentVariable("SMTP_EMAIL"),
+                        Environment.GetEnvironmentVariable("SMTP_PASSWORD")
+                    ),
                     EnableSsl = true
                 };
 
                 smtp.Send(mail);
+
 
                 // === Success message ===
                 StatusMessage = "Your request has been sent successfully!";
