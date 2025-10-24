@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Threading.Tasks;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace MyFirstSite.Pages
 {
@@ -27,7 +30,7 @@ namespace MyFirstSite.Pages
 
         public void OnGet() { }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
             // === Validation ===
             if (string.IsNullOrWhiteSpace(CleaningType))
@@ -89,33 +92,26 @@ namespace MyFirstSite.Pages
                 bodyBuilder.Append("</table>");
                 bodyBuilder.Append("<br><p style='font-size:12px; color:#666;'>This message was sent automatically from your website form.</p>");
                 bodyBuilder.Append("</body></html>");
-                
-                // === Send the email ===
-                var mail = new MailMessage
+
+                // === Send the email via SendGrid ===
+                var client = new SendGridClient(Environment.GetEnvironmentVariable("SENDGRID_API_KEY"));
+                var from = new EmailAddress(Environment.GetEnvironmentVariable("SENDER_EMAIL"), "VNA Pro Cleaning");
+                var subject = $"New Quote Request - {PreferredDate?.ToString("MM/dd/yyyy")} {DateTime.Now:hh:mm tt}";
+                var to = new EmailAddress(Environment.GetEnvironmentVariable("SENDER_EMAIL"));
+                var msg = MailHelper.CreateSingleEmail(from, to, subject, "", bodyBuilder.ToString());
+                var response = await client.SendEmailAsync(msg);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
                 {
-                    From = new MailAddress(Environment.GetEnvironmentVariable("SMTP_EMAIL")),
-                    Subject = $"New Quote Request - {PreferredDate?.ToString("MM/dd/yyyy")} {DateTime.Now:hh:mm tt}",
-                    Body = bodyBuilder.ToString(),
-                    IsBodyHtml = true
-                };
-
-                var smtp = new SmtpClient(Environment.GetEnvironmentVariable("SMTP_HOST"))
+                    StatusMessage = "Your request has been sent successfully!";
+                    IsSuccess = true;
+                    ModelState.Clear();
+                }
+                else
                 {
-                    Port = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT")),
-                    Credentials = new NetworkCredential(
-                        Environment.GetEnvironmentVariable("SMTP_EMAIL"),
-                        Environment.GetEnvironmentVariable("SMTP_PASSWORD")
-                    ),
-                    EnableSsl = true
-                };
-
-                smtp.Send(mail);
-
-
-                // === Success message ===
-                StatusMessage = "Your request has been sent successfully!";
-                IsSuccess = true;
-                ModelState.Clear();
+                    StatusMessage = $"Error sending email: {response.StatusCode}";
+                    IsSuccess = false;
+                }
             }
             catch (Exception ex)
             {
