@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Net;
-using System.Net.Mail;
+using System;
 using System.Text;
 using System.Threading.Tasks;
 using SendGrid;
@@ -11,7 +10,8 @@ namespace MyFirstSite.Pages
 {
     public class ContactModel : PageModel
     {
-        [BindProperty] public string CleaningType { get; set; }
+        [BindProperty] public string CleaningType { get; set; } // Deep / Basic
+        [BindProperty] public string CleaningArea { get; set; } // FullHouse / SpecificArea
         [BindProperty] public int? SquareFootage { get; set; }
         [BindProperty] public int? Rooms { get; set; }
         [BindProperty] public int? Bathrooms { get; set; }
@@ -35,19 +35,26 @@ namespace MyFirstSite.Pages
             // === Validation ===
             if (string.IsNullOrWhiteSpace(CleaningType))
             {
-                StatusMessage = "Please select a cleaning type.";
+                StatusMessage = "Please select a cleaning type (Deep or Basic).";
                 IsSuccess = false;
                 return Page();
             }
 
-            if (CleaningType == "FullHouse" && (!SquareFootage.HasValue || !Rooms.HasValue || !Bathrooms.HasValue))
+            if (string.IsNullOrWhiteSpace(CleaningArea))
+            {
+                StatusMessage = "Please select the area to clean.";
+                IsSuccess = false;
+                return Page();
+            }
+
+            if (CleaningArea == "FullHouse" && (!SquareFootage.HasValue || !Rooms.HasValue || !Bathrooms.HasValue))
             {
                 StatusMessage = "Please complete all Full House Cleaning fields.";
                 IsSuccess = false;
                 return Page();
             }
 
-            if (CleaningType == "SpecificArea" && string.IsNullOrWhiteSpace(Description))
+            if (CleaningArea == "SpecificArea" && string.IsNullOrWhiteSpace(Description))
             {
                 StatusMessage = "Please describe the area you want cleaned.";
                 IsSuccess = false;
@@ -76,6 +83,8 @@ namespace MyFirstSite.Pages
                 bodyBuilder.Append("<table style='width:100%; border-collapse:collapse;'>");
 
                 bodyBuilder.AppendFormat("<tr><td><strong>Cleaning Type:</strong></td><td>{0}</td></tr>", CleaningType);
+                bodyBuilder.AppendFormat("<tr><td><strong>Area to Clean:</strong></td><td>{0}</td></tr>", 
+                    CleaningArea == "FullHouse" ? "Full House" : "Specific Area");
                 bodyBuilder.AppendFormat("<tr><td><strong>Square Footage:</strong></td><td>{0}</td></tr>", SquareFootage?.ToString() ?? "N/A");
                 bodyBuilder.AppendFormat("<tr><td><strong>Number of Rooms:</strong></td><td>{0}</td></tr>", Rooms?.ToString() ?? "N/A");
                 bodyBuilder.AppendFormat("<tr><td><strong>Number of Bathrooms:</strong></td><td>{0}</td></tr>", Bathrooms?.ToString() ?? "N/A");
@@ -87,7 +96,7 @@ namespace MyFirstSite.Pages
                 bodyBuilder.AppendFormat("<tr><td><strong>Phone Number:</strong></td><td>{0}</td></tr>", Phone);
                 bodyBuilder.AppendFormat("<tr><td><strong>Has Pets:</strong></td><td>{0}</td></tr>", HasPets ? "Yes" : "No");
                 bodyBuilder.AppendFormat("<tr><td><strong>Special Instructions:</strong></td><td>{0}</td></tr>",
-                !string.IsNullOrWhiteSpace(SpecialInstructions) ? SpecialInstructions : "None");
+                    !string.IsNullOrWhiteSpace(SpecialInstructions) ? SpecialInstructions : "None");
 
                 bodyBuilder.Append("</table>");
                 bodyBuilder.Append("<br><p style='font-size:12px; color:#666;'>This message was sent automatically from your website form.</p>");

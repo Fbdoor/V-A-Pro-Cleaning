@@ -21,10 +21,20 @@
         <!-- Cleaning Type -->
         <div class="form-group">
             <label for="CleaningType">Cleaning Type</label>
-            <select id="CleaningType" name="CleaningType" class="form-control" onchange="toggleCleaningFields()" required>
+            <select id="CleaningType" name="CleaningType" class="form-control" required>
                 <option value="">-- Select Cleaning Type --</option>
-                <option value="FullHouse">Full House Cleaning</option>
-                <option value="SpecificArea">Specific Area Cleaning</option>
+                <option value="Basic">Basic Cleaning</option>
+                <option value="Deep">Deep Cleaning</option>
+            </select>
+        </div>
+
+        <!-- Area to Clean -->
+        <div class="form-group">
+            <label for="CleaningArea">Area to Clean</label>
+            <select id="CleaningArea" name="CleaningArea" class="form-control" onchange="toggleCleaningFields()" required>
+                <option value="">-- Select Area --</option>
+                <option value="FullHouse">Full House</option>
+                <option value="SpecificArea">Specific Area</option>
             </select>
         </div>
 
@@ -51,7 +61,7 @@
                 <textarea id="Description" name="Description" class="form-control" rows="3"></textarea>
             </div>
         </div>
-
+        
         <!-- Preferred Date -->
         <div class="form-group">
             <label for="PreferredDate">Preferred Date</label>
@@ -130,7 +140,6 @@
         <button type="submit" class="btn btn-primary full-width">Submit</button>
     </form>
 
-
     <!-- Contact Info Section -->
     <hr />
     <div class="mt-4">
@@ -147,20 +156,18 @@
 
 @section Scripts {
 <script>
-    // Toggle between Full House and Specific Area fields
+    // Toggle Full House / Specific Area fields
     function toggleCleaningFields() {
-        const type = document.getElementById('CleaningType').value;
+        const area = document.getElementById('CleaningArea').value;
         const fullHouseSection = document.getElementById('fullHouseSection');
         const specificAreaSection = document.getElementById('specificAreaSection');
 
-        // Hide both sections first
         fullHouseSection.style.display = 'none';
         specificAreaSection.style.display = 'none';
 
-        // Show based on selection
-        if (type === 'FullHouse') {
+        if (area === 'FullHouse') {
             fullHouseSection.style.display = 'block';
-        } else if (type === 'SpecificArea') {
+        } else if (area === 'SpecificArea') {
             specificAreaSection.style.display = 'block';
         }
     }
@@ -174,23 +181,29 @@
 
     // Validate form
     function validateForm() {
-        const type = document.getElementById('CleaningType').value;
+        const cleaningType = document.getElementById('CleaningType').value;
+        const area = document.getElementById('CleaningArea').value;
         const sq = document.getElementById('SquareFootage').value.trim();
         const rooms = document.getElementById('Rooms').value.trim();
         const baths = document.getElementById('Bathrooms').value.trim();
         const desc = document.getElementById('Description').value.trim();
 
-        if (!type) {
+        if (!cleaningType) {
             alert('Please select a cleaning type.');
             return false;
         }
 
-        if (type === 'FullHouse' && (!sq || !rooms || !baths)) {
-            alert('Please fill in all fields for Full House Cleaning.');
+        if (!area) {
+            alert('Please select the area to clean.');
             return false;
         }
 
-        if (type === 'SpecificArea' && !desc) {
+        if (area === 'FullHouse' && (!sq || !rooms || !baths)) {
+            alert('Please fill in all fields for Full House cleaning.');
+            return false;
+        }
+
+        if (area === 'SpecificArea' && !desc) {
             alert('Please describe the area you want cleaned.');
             return false;
         }
