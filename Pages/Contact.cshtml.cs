@@ -107,7 +107,7 @@ namespace MyFirstSite.Pages
 
                 httpClient.DefaultRequestHeaders.Add(
                     "Authorization",
-                    $"Bearer {Environment.GetEnvironmentVariable("RESEND_API_KEY")}"
+                    $"Bearer {Environment.GetEnvironmentVariable("re_3UvtAh51_4XvXn1xYg1dRqYgEY3LyCTTm")}"
                 );
 
                 var subject = $"New Quote Request - {PreferredDate?.ToString("MM/dd/yyyy")} {DateTime.Now:hh:mm tt}";
