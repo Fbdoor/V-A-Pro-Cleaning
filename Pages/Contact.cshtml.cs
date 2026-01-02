@@ -101,13 +101,13 @@ namespace MyFirstSite.Pages
                 bodyBuilder.Append("<br><p style='font-size:12px; color:#666;'>This message was sent automatically from your website form.</p>");
                 bodyBuilder.Append("</body></html>");
 
-                // === Send the email via SendGrid ===
+               
                 // === Send the email via Resend ===
                 using var httpClient = new HttpClient();
 
                 httpClient.DefaultRequestHeaders.Add(
                     "Authorization",
-                    $"Bearer {Environment.GetEnvironmentVariable("re_3UvtAh51_4XvXn1xYg1dRqYgEY3LyCTTm")}"
+                    $"Bearer {Environment.GetEnvironmentVariable("RESEND_API_KEY")}"
                 );
 
                 var subject = $"New Quote Request - {PreferredDate?.ToString("MM/dd/yyyy")} {DateTime.Now:hh:mm tt}";
