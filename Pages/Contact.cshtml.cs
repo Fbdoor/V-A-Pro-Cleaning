@@ -114,8 +114,8 @@ namespace MyFirstSite.Pages
 
                 var payload = new
                 {
-                    from = "VNA Pro Cleaning <onboarding@resend.dev>",
-                    to = new[] { "vnaproestimates@gmail.com" },
+                    from = "onboarding@vnaprocleaning.com", // <-- change here
+                    to = new[] { "vnaproestimates@gmail.com" }, // recipient
                     subject = subject,
                     html = bodyBuilder.ToString()
                 };
