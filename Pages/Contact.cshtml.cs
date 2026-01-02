@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Text;
 using System.Threading.Tasks;
-using SendGrid;
-using SendGrid.Helpers.Mail;
+
 
 namespace MyFirstSite.Pages
 {
@@ -103,14 +102,30 @@ namespace MyFirstSite.Pages
                 bodyBuilder.Append("</body></html>");
 
                 // === Send the email via SendGrid ===
-                var client = new SendGridClient(Environment.GetEnvironmentVariable("SENDGRID_API_KEY"));
-                var from = new EmailAddress(Environment.GetEnvironmentVariable("SENDER_EMAIL"), "VNA Pro Cleaning");
-                var subject = $"New Quote Request - {PreferredDate?.ToString("MM/dd/yyyy")} {DateTime.Now:hh:mm tt}";
-                var to = new EmailAddress(Environment.GetEnvironmentVariable("SENDER_EMAIL"));
-                var msg = MailHelper.CreateSingleEmail(from, to, subject, "", bodyBuilder.ToString());
-                var response = await client.SendEmailAsync(msg);
+                // === Send the email via Resend ===
+                using var httpClient = new HttpClient();
 
-                if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+                httpClient.DefaultRequestHeaders.Add(
+                    "Authorization",
+                    $"Bearer {Environment.GetEnvironmentVariable("RESEND_API_KEY")}"
+                );
+
+                var subject = $"New Quote Request - {PreferredDate?.ToString("MM/dd/yyyy")} {DateTime.Now:hh:mm tt}";
+
+                var payload = new
+                {
+                    from = "VNA Pro Cleaning <onboarding@resend.dev>",
+                    to = new[] { "vnaproestimates@gmail.com" },
+                    subject = subject,
+                    html = bodyBuilder.ToString()
+                };
+
+                var response = await httpClient.PostAsJsonAsync(
+                    "https://api.resend.com/emails",
+                    payload
+                );
+
+                if (response.IsSuccessStatusCode)
                 {
                     StatusMessage = "Your request has been sent successfully!";
                     IsSuccess = true;
@@ -118,9 +133,11 @@ namespace MyFirstSite.Pages
                 }
                 else
                 {
-                    StatusMessage = $"Error sending email: {response.StatusCode}";
+                    var errorBody = await response.Content.ReadAsStringAsync();
+                    StatusMessage = $"Error sending email: {response.StatusCode} - {errorBody}";
                     IsSuccess = false;
                 }
+
             }
             catch (Exception ex)
             {
